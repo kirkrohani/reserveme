@@ -11,6 +11,8 @@ async function bootstrap() {
   const configService: ConfigService = app.get(ConfigService);
   const PORT = configService.get('PORT');
   await app.listen(process.env.port ?? PORT);
-  console.log(`***** Reservations App listening on port ${PORT}`);
+  console.log(
+    `*********** Reservations App listening on port ${PORT} ************`,
+  );
 }
 bootstrap();
