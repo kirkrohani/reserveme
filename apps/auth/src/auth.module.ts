@@ -9,6 +9,7 @@ import * as Joi from 'joi';
 import { LocalStrategy } from './strategies/local.strategy';
 import { from } from 'rxjs';
 import { UsersService } from './users/users.service';
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   imports: [
@@ -34,6 +35,6 @@ import { UsersService } from './users/users.service';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy],
+  providers: [AuthService, LocalStrategy, JwtStrategy],
 })
 export class AuthModule {}

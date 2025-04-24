@@ -2,11 +2,17 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersRepository } from './users.repository';
 import * as bcrypt from 'bcryptjs';
+import { GetUserDto } from './dto/get-user.dto';
 
 @Injectable()
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
 
+  /**
+   * CREATE USER - creates a new user document in the db
+   * @param createUserDto
+   * @returns
+   */
   async create(createUserDto: CreateUserDto) {
     return this.usersRepository.create({
       ...createUserDto,
@@ -15,7 +21,7 @@ export class UsersService {
   }
 
   /**
-   * VERIFYUSER  - checks is user in db and if hashed password matches
+   * VERIFY USER  - checks is user in db and if hashed password matches
    * @param email
    * @param password
    * @returns
@@ -32,5 +38,9 @@ export class UsersService {
 
       return user;
     }
+  }
+
+  async getUser(getUserDto: GetUserDto) {
+    return this.usersRepository.findOne({ getUserDto });
   }
 }
