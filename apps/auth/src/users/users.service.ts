@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersRepository } from './users.repository';
 import * as bcrypt from 'bcryptjs';
@@ -41,6 +45,12 @@ export class UsersService {
   }
 
   async getUser(getUserDto: GetUserDto) {
-    return this.usersRepository.findOne({ getUserDto });
+    const user = await this.usersRepository.findOne({ getUserDto });
+    if (!user) {
+      throw new NotFoundException(
+        `User ${JSON.stringify(getUserDto)} not found `,
+      );
+    }
+    return user;
   }
 }

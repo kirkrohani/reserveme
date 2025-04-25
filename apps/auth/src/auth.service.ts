@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { UsersDocument } from './users/models/users.schema';
-import { Response } from 'express';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
+import { Response } from 'express';
 import { TokenPayload } from './interfaces/token-payload.interface';
+import { UsersDocument } from './users/models/users.schema';
 
 @Injectable()
 export class AuthService {
@@ -23,9 +23,12 @@ export class AuthService {
     );
 
     const token = this.jwtService.sign(tokenPayload);
+
     response.cookie('Authentication', token, {
       httpOnly: true,
       expires,
     });
+
+    return token;
   }
 }
