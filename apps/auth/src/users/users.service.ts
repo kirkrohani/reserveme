@@ -45,7 +45,7 @@ export class UsersService {
   }
 
   async getUser(getUserDto: GetUserDto) {
-    const user = await this.usersRepository.findOne({ getUserDto });
+    const user = await this.usersRepository.findOne(getUserDto);
     if (!user) {
       throw new NotFoundException(
         `User ${JSON.stringify(getUserDto)} not found `,
