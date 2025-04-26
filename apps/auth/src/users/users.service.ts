@@ -1,5 +1,6 @@
 import {
   Injectable,
+  Logger,
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
@@ -10,6 +11,8 @@ import { GetUserDto } from './dto/get-user.dto';
 
 @Injectable()
 export class UsersService {
+  protected readonly logger: Logger = new Logger(UsersService.name);
+
   constructor(private readonly usersRepository: UsersRepository) {}
 
   /**
@@ -40,6 +43,9 @@ export class UsersService {
       if (!isPasswordValid)
         throw new UnauthorizedException('Credentials Not Valid');
 
+      this.logger.log(
+        `\n------------------------------------------> Users Service verifyUser() successful)} <------------------------------------------\n `,
+      );
       return user;
     }
   }

@@ -1,25 +1,24 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-local';
 import { UsersService } from '../users/users.service';
 
 @Injectable()
-export class LocalStrategy extends PassportStrategy(Strategy) {
+export class LocalStategy extends PassportStrategy(Strategy) {
+  protected readonly logger: Logger = new Logger(LocalStategy.name);
+
   constructor(private readonly usersService: UsersService) {
     super({ usernameField: 'email' });
   }
 
-  /**
-   *  VALIDATE - Calls User Service verifyUser method to check that the user exists and password matches
-   * @param email
-   * @param password
-   * @returns
-   */
   async validate(email: string, password: string) {
+    this.logger.log(
+      `\n------------------------------------------> Local Strategy validate() returns user obj from UserService.verifyUser() )} <------------------------------------------\n `,
+    );
     try {
       return await this.usersService.verifyUser(email, password);
     } catch (err) {
-      throw new UnauthorizedException('Credentials Not Valid ', err);
+      throw new UnauthorizedException(err);
     }
   }
 }
