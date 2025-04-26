@@ -3,6 +3,7 @@ import {
   Logger,
   NotFoundException,
   UnauthorizedException,
+  UnprocessableEntityException,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersRepository } from './users.repository';
@@ -21,14 +22,30 @@ export class UsersService {
    * @returns
    */
   async create(createUserDto: CreateUserDto) {
+    await this.validateCreateUserDto(createUserDto);
+    console.log('back in the create');
     return this.usersRepository.create({
       ...createUserDto,
       password: await bcrypt.hash(createUserDto.password, 10),
     });
   }
 
+  private async validateCreateUserDto(createUserDto: CreateUserDto) {
+    console.log('EMAIL: ', createUserDto);
+    try {
+      await this.usersRepository.findOne({
+        email: createUserDto.email,
+      });
+    } catch (err) {
+      return;
+    }
+    throw new UnprocessableEntityException(
+      `Duplicate User ${createUserDto.email}`,
+    );
+  }
+
   /**
-   * VERIFY USER  - checks is user in db and if hashed password matches
+   * VERIFY USER  - checks if user in db and if hashed password matches
    * @param email
    * @param password
    * @returns
@@ -44,7 +61,7 @@ export class UsersService {
         throw new UnauthorizedException('Credentials Not Valid');
 
       this.logger.log(
-        `\n------------------------------------------> Users Service verifyUser() successful)} <------------------------------------------\n `,
+        `\n------------------------------------------> Users Service verifyUser() successful)} \n `,
       );
       return user;
     }

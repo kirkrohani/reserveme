@@ -13,7 +13,7 @@ export class LocalStategy extends PassportStrategy(Strategy) {
 
   async validate(email: string, password: string) {
     this.logger.log(
-      `\n------------------------------------------> Local Strategy validate() returns user obj from UserService.verifyUser() )} <------------------------------------------\n `,
+      `\n------------------------------------------> Local Strategy validate() returns user obj from UserService.verifyUser() )}  \n `,
     );
     try {
       return await this.usersService.verifyUser(email, password);

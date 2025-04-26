@@ -18,7 +18,7 @@ export class AuthController {
     @Res({ passthrough: true }) response: Response,
   ) {
     this.logger.log(
-      '\n------------------------------------------> Auth Controller login() <------------------------------------------\n ',
+      '\n------------------------------------------> Auth Controller login() \n ',
     );
     const jwt = await this.authService.login(user, response);
     response.send(jwt);

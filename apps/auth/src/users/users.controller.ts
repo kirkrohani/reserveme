@@ -14,7 +14,7 @@ export class UsersController {
   @Post()
   async createUser(@Body() createUserDto: CreateUserDto) {
     this.logger.log(
-      '\n------------------------------------------> Users Controller createUser() <------------------------------------------\n ',
+      '\n------------------------------------------> Users Controller createUser() \n ',
     );
     return this.usersService.create(createUserDto);
   }
@@ -23,7 +23,7 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   async getUser(@CurrentUser() user: UsersDocument) {
     this.logger.log(
-      `\n------------------------------------------> Users Controller getUser()${JSON.stringify(user)} <------------------------------------------\n `,
+      `\n------------------------------------------> Users Controller getUser()${JSON.stringify(user)} \n `,
     );
     return user;
   }

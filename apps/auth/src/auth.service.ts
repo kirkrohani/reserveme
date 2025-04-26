@@ -39,7 +39,7 @@ export class AuthService {
     });
 
     this.logger.log(
-      `\n------------------------------------------> Auth Service login() response token successfully set as http cookie)} <------------------------------------------\n `,
+      `\n------------------------------------------> Auth Service login() response token successfully set as http cookie)} \n `,
     );
     return token;
   }
