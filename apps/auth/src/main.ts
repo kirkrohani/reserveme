@@ -20,9 +20,9 @@ async function bootstrap() {
   app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useLogger(app.get(Logger));
-  const PORT = configService.get('PORT');
+  const HTTP_PORT = configService.get('HTTP_PORT');
   await app.startAllMicroservices();
   await app.listen(process.env.port ?? configService.get('HTTP_PORT'));
-  console.log(`********** Auth App listening on port ${PORT} **********`);
+  console.log(`********** Auth App listening on port ${HTTP_PORT} **********`);
 }
 bootstrap();
