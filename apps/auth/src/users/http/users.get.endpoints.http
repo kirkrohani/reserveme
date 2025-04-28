@@ -1,0 +1,6 @@
+GET http://localhost:3001/users
+
+{
+    "email": "kirkrohani5@gmail.com",
+    "password": "@Password05"
+}
