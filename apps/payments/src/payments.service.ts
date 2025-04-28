@@ -12,8 +12,4 @@ export class PaymentsService {
   );
 
   constructor(private readonly configService: ConfigService) {}
-
-  getHello(): string {
-    return 'Hello World!';
-  }
 }
