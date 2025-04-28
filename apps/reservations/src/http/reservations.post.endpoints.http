@@ -2,6 +2,8 @@ POST http://localhost:3000/reservations
 Content-Type: application/json
 
 {
-    "email": "kirkrohani5@gmail.com",
-    "password": "@Password05"
+  "startDate": "04-27-2025",
+  "endDate": "04-28-2025",
+  "placeId": "22222",
+  "invoiceId": "1234"
 }

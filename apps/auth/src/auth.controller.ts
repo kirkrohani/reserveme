@@ -1,6 +1,6 @@
 import { Controller, Logger, Post, Res, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
-import { CurrentUser } from './current-user.decorator';
+import { CurrentUser } from '@app/common';
 import { UsersDocument } from './users/models/users.schema';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
