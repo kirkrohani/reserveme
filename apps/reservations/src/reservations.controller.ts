@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Logger,
 } from '@nestjs/common';
 import { ReservationsService } from './reservations.service';
 import { CreateReservationDto } from './dto/create-reservation.dto';
@@ -15,6 +16,8 @@ import { CurrentUser, JwtAuthGuard, UserDto } from '@app/common';
 
 @Controller('reservations')
 export class ReservationsController {
+  protected readonly logger: Logger = new Logger(ReservationsController.name);
+
   constructor(private readonly reservationsService: ReservationsService) {}
 
   @UseGuards(JwtAuthGuard)
@@ -23,6 +26,9 @@ export class ReservationsController {
     @Body() createReservationDto: CreateReservationDto,
     @CurrentUser() user: UserDto,
   ) {
+    this.logger.log(
+      '\n------------------------------------------> Res Controller create() \n ',
+    );
     return this.reservationsService.create(createReservationDto, user._id);
   }
 
@@ -44,6 +50,9 @@ export class ReservationsController {
     @Param('id') id: string,
     @Body() updateReservationDto: UpdateReservationDto,
   ) {
+    this.logger.log(
+      '\n------------------------------------------> Res Controller update() \n ',
+    );
     return this.reservationsService.update(id, updateReservationDto);
   }
 

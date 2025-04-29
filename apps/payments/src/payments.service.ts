@@ -15,16 +15,20 @@ export class PaymentsService {
   constructor(private readonly configService: ConfigService) {}
 
   async createCharge({ card, amount }: CreateChargeDto) {
+    console.log('**********INSIDE PAYMENTS SERVICE createCharge()');
     const paymentMethod = await this.stripeClient.paymentMethods.create({
       type: 'card',
-      card,
+      card: { token: 'tok_mastercard' },
     });
 
     const paymentIntent = this.stripeClient.paymentIntents.create({
-      payment_method: paymentMethod.id,
       amount: amount * 100,
+      automatic_payment_methods: {
+        enabled: true,
+        allow_redirects: 'never',
+      },
       confirm: true,
-      payment_method_types: ['card'],
+      payment_method: paymentMethod.id,
       currency: 'usd',
     });
     return paymentIntent;
