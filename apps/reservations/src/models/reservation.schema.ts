@@ -17,9 +17,6 @@ export class ReservationDocument extends AbstractDocument {
   userId: string;
 
   @Prop(SchemaTypes.String)
-  placeId: string;
-
-  @Prop(SchemaTypes.String)
   invoiceId: string;
 }
 
