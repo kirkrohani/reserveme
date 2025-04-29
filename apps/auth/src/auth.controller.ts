@@ -1,4 +1,12 @@
-import { Controller, Logger, Post, Res, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Logger,
+  Post,
+  Res,
+  UseGuards,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { Response } from 'express';
 import { CurrentUser } from '@app/common';
 import { UsersDocument } from './users/models/users.schema';
@@ -27,6 +35,7 @@ export class AuthController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @UsePipes(new ValidationPipe())
   @MessagePattern('authenticate')
   async authenticate(@Payload() data: any) {
     return data.user;
