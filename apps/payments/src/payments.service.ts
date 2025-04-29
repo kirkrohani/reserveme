@@ -15,7 +15,6 @@ export class PaymentsService {
   constructor(private readonly configService: ConfigService) {}
 
   async createCharge({ card, amount }: CreateChargeDto) {
-    console.log('**********INSIDE PAYMENTS SERVICE createCharge()');
     const paymentMethod = await this.stripeClient.paymentMethods.create({
       type: 'card',
       card: { token: 'tok_mastercard' },
