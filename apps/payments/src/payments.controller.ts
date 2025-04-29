@@ -9,6 +9,7 @@ export class PaymentsController {
 
   @MessagePattern('create_charge')
   async createCharge(@Payload() data: CreateChargeDto) {
+    console.log('********* PAYMENTS CONTOLLER charge');
     return this.paymentsService.createCharge(data);
   }
 }

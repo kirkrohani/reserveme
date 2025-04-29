@@ -17,12 +17,13 @@ export class ReservationsService {
 
   async create(createReservationDto: CreateReservationDto, userId: string) {
     this.logger.log(
-      `\n------------------------------------------> Res Service create reservation() \n `,
+      '\n------------------------------------------> Res Service create() \n ',
     );
-    this.paymentsService
+    return this.paymentsService
       .send('create_charge', createReservationDto.charge)
       .pipe(
-        map(() => {
+        map((response) => {
+          console.log('*****CREATE CHARGE: ', response);
           return this.reservationsRepository.create({
             ...createReservationDto,
             timestamp: new Date(),
