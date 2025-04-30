@@ -2,9 +2,8 @@ POST http://localhost:3000/reservations
 Content-Type: application/json
 
 {
-  "startDate": "04-28-2025",
-  "endDate": "04-28-2025",
-  "placeId": "33333",
+  "startDate": "04-30-2025",
+  "endDate": "05-01-2025",
   "invoiceId": "1236",
   "charge": {
     "amount": 11,

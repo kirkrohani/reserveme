@@ -27,7 +27,7 @@ export class ReservationsController {
     @CurrentUser() user: UserDto,
   ) {
     this.logger.log('\n-------------> Res Controller create reservation() \n ');
-    return this.reservationsService.create(createReservationDto, user._id);
+    return this.reservationsService.create(createReservationDto, user);
   }
 
   @UseGuards(JwtAuthGuard)

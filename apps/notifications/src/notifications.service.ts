@@ -6,6 +6,6 @@ export class NotificationsService {
   protected readonly logger: Logger = new Logger(NotificationsService.name);
 
   async notifyEmail({ email }: NotifyEmailDto) {
-    this.logger.log('\n----------> Notifications Service notifyEmail()', email);
+    this.logger.log(`\n---------->  notifyEmail() ${email}`);
   }
 }
