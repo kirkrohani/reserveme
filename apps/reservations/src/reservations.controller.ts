@@ -26,9 +26,7 @@ export class ReservationsController {
     @Body() createReservationDto: CreateReservationDto,
     @CurrentUser() user: UserDto,
   ) {
-    this.logger.log(
-      '\n------------------------------------------> Res Controller create reservation() \n ',
-    );
+    this.logger.log('\n-------------> Res Controller create reservation() \n ');
     return this.reservationsService.create(createReservationDto, user._id);
   }
 
