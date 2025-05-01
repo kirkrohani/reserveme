@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 import { CurrentUser } from '@app/common';
-import { UsersDocument } from './users/models/users.schema';
+import { UsersDocument } from '@app/common';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { MessagePattern, Payload } from '@nestjs/microservices';
