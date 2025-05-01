@@ -19,14 +19,14 @@ export class NotificationsService {
     },
   });
 
-  async notifyEmail({ email }: NotifyEmailDto) {
+  async notifyEmail({ email, message }: NotifyEmailDto) {
     this.logger.log(`\n------------------------>  notifyEmail() ${email}`);
 
     await this.transporter.sendMail({
       from: this.configService.get('SMTP_USER'),
       to: email,
       subject: 'ReserveMe Notification',
-      text: 'Hello World, from ReserveMe App',
+      text: message,
     });
   }
 }
