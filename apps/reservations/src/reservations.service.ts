@@ -15,12 +15,19 @@ export class ReservationsService {
     @Inject(PAYMENTS_SERVICE) private readonly paymentsService: ClientProxy,
   ) {}
 
+  /**
+   * CREATE RESERVATION - Calls thepayments service createCharge methjod and then saves reservations to
+   * database
+   * @param createReservationDto
+   * @param email and userId of  user creating reservation
+   * @returns
+   */
   async create(
     createReservationDto: CreateReservationDto,
     { email, _id: userId }: UserDto,
   ) {
     this.logger.log(
-      '\n------------------------------------------> Res Service create() \n ',
+      '\n---------------------> Reservation Service create() \n ',
     );
     return this.paymentsService
       .send('create_charge', {
