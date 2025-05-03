@@ -59,4 +59,5 @@ steps:
       'push',
       'us-east4-docker.pkg.dev/reserveme-458502/notifications/production_1.0.0',
      ]
-logging: CLOUD_LOGGING_ONLY
+options:
+  logging:  CLOUD_LOGGING_ONLY
