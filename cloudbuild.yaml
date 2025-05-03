@@ -1,5 +1,4 @@
 steps:
-
   #Reservations
   - name: 'gcr.io/cloud-builders/docker'
     args:   [
@@ -63,3 +62,4 @@ steps:
       'push',
       'us-east4-docker.pkg.dev/reserveme-458502/notifications/production_1.0.0',
      ]
+#Adding some general comments
