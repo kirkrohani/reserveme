@@ -1,4 +1,4 @@
-POST http://localhost:3001/users
+POST http://localhost:30699/users
 Content-Type: application/json
 
   {
@@ -8,7 +8,7 @@ Content-Type: application/json
     "lastName": "rohani"
 }
 
-POST http://localhost:3001/auth/login
+POST http://localhost:30699/auth/login
 Content-Type: application/json
 
 {
