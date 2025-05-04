@@ -17,3 +17,22 @@ spec:
       containers:
         - image: us-east4-docker.pkg.dev/reserveme-458502/notifications/production_1.0.0
           name: notifications
+          env:
+            - name: PORT
+              value: '3000'
+            - name: GOOGLE_OAUTH_CLIENT_ID
+              value: 92425427472-hdiib5v18fd741qsnvlcme50hfc1hotv.apps.googleusercontent.com
+            - name: SMTP_USER
+              value: eightbitreserveme@gmail.com
+            - name: GOOGLE_OAUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: google
+                  key: clientSecret
+            - name: GOOGLE_OAUTH_REFRESH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: google
+                  key: refreshToken
+          ports:
+            - containerPort: 3000
