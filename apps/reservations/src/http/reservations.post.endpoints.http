@@ -3,10 +3,10 @@ Content-Type: application/json
 
 {
   "startDate": "05-03-2025",
-  "endDate": "05-04-2025",
+  "endDate": "05-14-2025",
   "invoiceId": "1236",
   "charge": {
-    "amount": 11,
+    "amount": 27,
     "card": {
       "cvc": "413",
       "exp_month": 12,
