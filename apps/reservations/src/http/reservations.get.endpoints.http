@@ -1,2 +1,2 @@
-GET http://localhost:3000/reservations
+GET http://localhost:31665/reservations
 Content-Type: application/json

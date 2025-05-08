@@ -2,16 +2,16 @@ POST http://localhost:30699/users
 Content-Type: application/json
 
   {
-    "email": "kirkrohani@gmail.com",
-    "password": "@Password01",
-    "firstName": "kirk",
-    "lastName": "rohani"
+    "email": "kirk.rohani@gmail.com",
+    "password": "@Password02",
+    "firstName": "kirk2",
+    "lastName": "rohani2"
 }
 
 POST http://localhost:30699/auth/login
 Content-Type: application/json
 
 {
-    "email": "kirkrohani@gmail.com",
-    "password": "@Password01"
+    "email": "kirk.rohani@gmail.com",
+    "password": "@Password02"
 }

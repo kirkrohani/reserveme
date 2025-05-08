@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import Stripe from 'stripe';
 import { NOTIFICATIONS_SERVICE } from '@app/common';
@@ -7,6 +7,8 @@ import { PaymentsCreateChargeDto } from './dto/payments-create-charge.dto';
 
 @Injectable()
 export class PaymentsService {
+  protected readonly logger: Logger = new Logger(PaymentsService.name);
+
   private readonly stripeClient = new Stripe(
     this.configService.get('STRIPE_SECRET_KEY'),
     {
@@ -41,7 +43,10 @@ export class PaymentsService {
       payment_method: paymentMethod.id,
       currency: 'usd',
     });
-
+    this.logger.log(
+      '\n---------------------> Payments Service charge successfully created ',
+      paymentIntent,
+    );
     this.notificationsService.emit('notify-email', {
       email,
       message: `Your payment of $${amount} has been completed successfully.`,
