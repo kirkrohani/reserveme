@@ -6,7 +6,7 @@ Content-Type: application/json
   "endDate": "05-09-2025",
   "invoiceId": "1236",
   "charge": {
-    "amount": 270,
+    "amount": 55,
     "card": {
       "cvc": "413",
       "exp_month": 12,
