@@ -1,12 +1,12 @@
-POST http://localhost:31665/reservations
+POST http://34.111.148.190/reservations/
 Content-Type: application/json
 
 {
-  "startDate": "05-08-2025",
-  "endDate": "05-09-2025",
+  "startDate": "05-13-2025",
+  "endDate": "05-14-2025",
   "invoiceId": "1236",
   "charge": {
-    "amount": 55,
+    "amount": 513,
     "card": {
       "cvc": "413",
       "exp_month": 12,
