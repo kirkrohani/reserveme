@@ -1,4 +1,7 @@
-POST http://34.111.148.190/reservations/
+ #GCP Ingress
+#POST http://34.111.148.190/reservations/
+
+POST http://localhost:3000/reservations/
 Content-Type: application/json
 
 {
@@ -6,7 +9,7 @@ Content-Type: application/json
   "endDate": "05-14-2025",
   "invoiceId": "1236",
   "charge": {
-    "amount": 513,
+    "amount": 12,
     "card": {
       "cvc": "413",
       "exp_month": 12,

@@ -1,17 +1,21 @@
-POST http://localhost:30699/users
+#POST http://localhost:30699/users
+
+POST http://localhost:3001/users
 Content-Type: application/json
 
   {
     "email": "kirk.rohani@gmail.com",
-    "password": "@Password02",
-    "firstName": "kirk2",
-    "lastName": "rohani2"
+    "password": "@Password01",
+    "firstName": "kirk",
+    "lastName": "rohani"
 }
 
-POST http://34.111.148.190/auth/login
+#POST http://34.111.148.190/auth/login
+
+POST http://localhost:3001/auth/login
 Content-Type: application/json
 
 {
     "email": "kirk.rohani@gmail.com",
-    "password": "@Password02"
+    "password": "@Password01"
 }
