@@ -1,4 +1,4 @@
-FROM node:alpine As development
+FROM 183695703212.dkr.ecr.us-east-1.amazonaws.com/node-alpine As development
 
 WORKDIR /usr/src/app
 
@@ -16,7 +16,7 @@ COPY libs libs
 
 RUN pnpm run build reservations
 
-FROM node:alpine as production
+FROM 183695703212.dkr.ecr.us-east-1.amazonaws.com/node-alpine as production
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
