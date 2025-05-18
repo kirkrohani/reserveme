@@ -1,5 +1,5 @@
 
-FROM 183695703212.dkr.ecr.us-east-1.amazonaws.com/node-alpine As development
+FROM 183695703212.dkr.ecr.us-east-1.amazonaws.com/node-alpine-amd64 As development
 
 WORKDIR /usr/src/app
 
@@ -19,7 +19,7 @@ RUN cd apps/payments && pnpm install
 
 RUN pnpm run build payments
 
-FROM 183695703212.dkr.ecr.us-east-1.amazonaws.com/node-alpine as production
+FROM 183695703212.dkr.ecr.us-east-1.amazonaws.com/node-alpine-amd64 as production
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
