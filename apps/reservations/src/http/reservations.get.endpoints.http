@@ -1,2 +1,4 @@
-GET http://34.111.148.190/reservations/
+# http://34.111.148.190/reservations/
+
+GET http://k8s-default-reservem-cbb1345032-707811019.us-east-1.elb.amazonaws.com/reservations/
 Content-Type: application/json
