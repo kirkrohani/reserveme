@@ -15,15 +15,13 @@ spec:
         app: notifications
     spec:
       containers:
-        - image: us-east4-docker.pkg.dev/reserveme-458502/notifications/production_1.0.0
+        - image: 183695703212.dkr.ecr.us-east-1.amazonaws.com/notifications:latest
           name: notifications
           env:
             - name: PORT
               value: '3000'
             - name: GOOGLE_OAUTH_CLIENT_ID
               value: 92425427472-hdiib5v18fd741qsnvlcme50hfc1hotv.apps.googleusercontent.com
-            - name: SMTP_USER
-              value: eightbitreserveme@gmail.com
             - name: GOOGLE_OAUTH_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
@@ -34,5 +32,7 @@ spec:
                 secretKeyRef:
                   name: google
                   key: refreshToken
+            - name: SMTP_USER
+              value: eightbitreserveme@gmail.com
           ports:
             - containerPort: 3000
