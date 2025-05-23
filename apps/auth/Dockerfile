@@ -1,4 +1,4 @@
-FROM 183695703212.dkr.ecr.us-east-1.amazonaws.com/node-alpine-amd64 As development
+FROM node:alpine As development
 
 WORKDIR /usr/src/app
 
@@ -18,7 +18,7 @@ RUN cd apps/auth && pnpm install
 
 RUN pnpm run build auth
 
-FROM 183695703212.dkr.ecr.us-east-1.amazonaws.com/node-alpine-amd64 as production
+FROM node:alpine as production
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
