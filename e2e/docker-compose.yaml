@@ -29,7 +29,7 @@ services:
     env_file:
       - ../apps/payments/.env
   notifications:
-    image: 183695703212.dkr.ecr.us-east-1.amazonaws.com/notifications
+    image: 183695703212.dkr.ecr.us-east-1.amazonaws.com/notifications:latest
     ports:
       - '3004:3004'
     env_file:
